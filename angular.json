@@ -94,7 +94,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         },
         "lint": {
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mysite"
+    }
+  },
+  "defaultProject": "mysite",
+  "cli": {
+    "analytics": "49d2810b-e837-4ef8-91dc-d133b4c3e51e"
+  }
 }

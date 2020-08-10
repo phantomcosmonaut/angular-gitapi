@@ -1,0 +1,61 @@
+$brd1: rgba(23, 162, 184, 0.5);
+$brd2: rgba(23, 162, 184, 1);
+$lg: rgb(230,230,230);
+
+.repo{
+    transition: all 0.2s;
+    text-align: center;
+    height: auto;
+    min-width: 100px;
+    width: auto;
+    border-radius: 5%;
+    margin: 0 10px 0 10px;
+    font-size: 22px;
+    padding: 10px;
+    cursor: pointer;
+}
+.active-repo{
+    border: 2px solid black;
+    pointer-events: none;;
+}
+.repo:hover{
+    transform: scale(1.05);
+}
+#repo-list{
+    overflow: auto;
+    height: 130px;
+    width: 100%;
+    padding: 0 15px 0 15px;
+    background-color: $lg;
+}
+input[type=text]{
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    border: 0px;
+    border-bottom: 3px solid $brd1;
+    border-radius: 0;
+    padding: 4px 4px 4px 8px;
+    margin: 6px;
+}
+input[type=text]:focus{
+    outline: none;
+    border:0;
+    border-bottom: 3px solid $brd2;
+}
+#x-rate-info{
+    padding: 8px;
+    width: auto;
+    color: black;
+}
+#repo-top-bar{
+    margin-top: 40px;
+    padding: 10px 0 10px 0;
+}
+.repo-container{
+    width: 100%;
+}
+#graph-area{
+    width: 100%;
+    margin: 0;
+}

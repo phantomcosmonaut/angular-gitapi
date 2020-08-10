@@ -1,0 +1,60 @@
+<div class="row justify-content-center m-2" id="repo-top-bar">
+    <form [formGroup]="repoForm" (ngSubmit)="GetRepo()" id="repoForm">
+        <input type="text" formControlName="owner" placeholder="owner">
+        <input type="text" formControlName="repo" placeholder="repo">
+        <input type="submit" class="btn btn-info" value="Search" [disabled]="loading">
+    </form>
+</div>
+<div>
+    <div id="repo-list" class="d-flex align-items-center  justify-content-center">
+        <div *ngFor="let repo of repos" (click)="SelectContainer(repo.id)" class="repo btn-info"
+            [ngClass]="{'active-repo': currentContainer === repo}">
+            <ul class="list-unstyled m-0">
+                <li><b>{{repo.id.slice(0, repo.id.indexOf("/"))}}</b></li>
+                <li><b>{{repo.id.slice(repo.id.indexOf("/")+1, repo.id.length)}}</b></li>
+            </ul>
+        </div>
+    </div>
+    <div id="x-rate-info" class="row justify-content-center">
+        <span class="mr-4">Requests: {{remaining}}</span>
+        <span *ngIf="resetTime; else otherTime">Time Till Reset: {{resetTime | date:'shortTime' }}</span>
+        <ng-template #otherTime>Time Till Reset: -</ng-template>
+    </div>
+</div>
+
+<div *ngIf='currentContainer' class="repo-container mt-2 p-2">
+    <h2>
+        <img height="35" src="https://img.icons8.com/ios-filled/50/000000/repository.png" />
+        {{currentContainer.id}}
+        <button class="btn-sm btn-danger ml-2" (click)="DeleteRepo()">Delete</button>
+    </h2>
+    <div class="repo-body">
+        <div *ngIf="repos.length === 0 && !loading; else showPlots">
+            <div id="emptyArr">
+                <h2>Add Repos To See Results</h2>
+            </div>
+        </div>
+        <ng-template #showPlots>
+            <div *ngIf="currentContainer" id="plot-container" class="">
+                <div id="graph-area" class="row justify-content-center">
+                    <div class="card m-2 text-center">
+                        <h2>Users</h2>
+                        <app-usersplot id="usersplot" [users]="users" #Users></app-usersplot>
+                    </div>
+                    <div class="card m-2 text-center">
+                        <h2>Labels Count</h2>
+                        <app-labelsplot [labels]="labels" [repoUrl]="url" #Labels></app-labelsplot>
+                    </div>
+                    <div class="card m-2 text-center">
+                        <h2>Comments</h2>
+                        <app-issuesplot #comments [property]="'comments'" [data]="currentContainer.body">
+                        </app-issuesplot>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+<div id="loading" *ngIf="loading" class="d-flex justify-content-center mt-5">
+    <img src="../../assets/nyancat.gif" height="120px">
+</div>

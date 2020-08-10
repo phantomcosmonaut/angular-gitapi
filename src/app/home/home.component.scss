@@ -1,0 +1,36 @@
+body{
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+}
+
+  #american-house {
+    border-bottom: 8px solid rgb(28, 28, 121);
+    padding-top: 16.12%;
+    margin-top: 70px;
+    width: 100%;
+    background-image: url("https://media.foxbusiness.com/BrightCove/854081161001/201806/3931/854081161001_5792509571001_5792512021001-vs.jpg");
+    background-position: center 70px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(28, 28, 121);
+  }
+  
+  @media (max-width: 900px) {
+    #american-house {
+      background-size: auto;
+      height: 160px;
+    }
+  }
+
+#content{
+    margin-top: 50px;
+    height: auto;
+}
+.wrapper{
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
