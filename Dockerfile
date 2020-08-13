@@ -1,6 +1,7 @@
-From alpine
+FROM alpine
 RUN apk add --update npm
-COPY ./src /src 
-COPY package.json .
+RUN npm install npm@latest -g
+RUN npm install @angular/cli -g
+COPY . .
 RUN npm install --production
-CMD npm run ng build
+CMD ng build
