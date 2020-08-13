@@ -1,7 +1,6 @@
-From Alpine
+From alpine
 RUN apk add --update npm
-COPY ./src
-WORKDIR /
+COPY ./src /src 
+COPY package.json .
 RUN npm install --production
-RUN git pull
 CMD npm run ng build
