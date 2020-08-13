@@ -4,5 +4,5 @@ RUN npm install npm@latest -g
 RUN npm install @angular/cli -g
 COPY . ./files
 WORKDIR /files
-RUN npm install --production
+RUN npm install
 CMD ng build
