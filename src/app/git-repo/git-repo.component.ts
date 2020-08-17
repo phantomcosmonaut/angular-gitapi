@@ -56,8 +56,8 @@ export class GitRepoComponent implements OnInit {
 
   constructor(private git: GitService, private formBuilder: FormBuilder, private storage: GitStorageService) { }
   repoForm = this.formBuilder.group({
-    owner: "ezsql",
-    repo: "ezsql"
+    owner: "",
+    repo: ""
   })
 
   ngOnInit() {
