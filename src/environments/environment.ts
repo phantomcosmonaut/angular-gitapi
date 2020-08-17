@@ -1,12 +1,9 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import * as signalR from 'node_modules/@aspnet/signalr';
 
 export const environment = {
   production: false,
-  signalRhub: new signalR.HubConnectionBuilder().withUrl("https://localhost:5001/signalr")
-  .configureLogging(signalR.LogLevel.Information),
   githubapi: "https://api.github.com/",
 };
 
