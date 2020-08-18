@@ -125,5 +125,3 @@ export class GitRepoComponent implements OnInit {
     console.log(message);
   }
 }
-
-
