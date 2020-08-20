@@ -2,11 +2,15 @@
     <form [formGroup]="repoForm" (ngSubmit)="GetRepo()" id="repoForm">
         <input type="text" formControlName="owner" placeholder="owner">
         <input type="text" formControlName="repo" placeholder="repo">
-        <input type="submit" class="btn btn-info" value="Search" [disabled]="loading">
+        <input type="submit" class="btn btn-info" value="Search"
+            [disabled]="loading || this.formRepo === '' || this.formOwner === ''">
     </form>
 </div>
 <div>
     <div id="repo-list" class="d-flex align-items-center  justify-content-center">
+        <div *ngIf="repos.length === 0">
+            <h4>Search Github repositories to explore new data visualizations</h4>
+        </div>
         <div *ngFor="let repo of repos" (click)="SelectContainer(repo.id)" class="repo btn-info"
             [ngClass]="{'active-repo': currentContainer === repo}">
             <ul class="list-unstyled m-0">
@@ -19,6 +23,12 @@
         <span class="mr-4">Requests: {{remaining}}</span>
         <span *ngIf="resetTime; else otherTime">Time Till Reset: {{resetTime | date:'shortTime' }}</span>
         <ng-template #otherTime>Time Till Reset: -</ng-template>
+        <span id="rate-info-q" class="info-icon my-auto"><b>?</b></span>
+        <span id="rate-info-q-content" class="custom-tooltip">
+            Github limits the number of requests you can make to their server every hour.
+            Account authentication is required to increase that limit. Searching for a repo requires multiple
+            requests which may exceed your current rate limit.
+        </span>
     </div>
 </div>
 

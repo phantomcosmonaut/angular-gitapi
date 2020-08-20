@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+import {$, JQuery} from '../../../node_modules/jquery';
 
 interface spinnerOptions{
   ellipseX?: number;

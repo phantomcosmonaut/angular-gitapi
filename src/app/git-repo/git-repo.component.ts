@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, AfterViewInit } from '@angular/core';
 import { GitService } from '../Services/git.service';
 import { GitStorageService } from '../Services/gitStorage.service';
 import { FormBuilder } from '@angular/forms';
@@ -11,13 +11,14 @@ import { UsersPlotComponent } from '../usersplot/usersplot.component';
 import { selectAll } from 'd3-selection';
 import { finalize } from 'rxjs/operators';
 import { IssuesplotComponent } from '../issuesplot/issuesplot.component';
+import { Observable, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-git-repo',
   templateUrl: './git-repo.component.html',
   styleUrls: ['./git-repo.component.scss'],
 })
-export class GitRepoComponent implements OnInit {
+export class GitRepoComponent implements AfterViewInit {
   get issues(){
     return this.currentContainer.body.issues;
   }
@@ -42,6 +43,12 @@ export class GitRepoComponent implements OnInit {
   get url(): string{
     return "https://github.com/" + this.currentContainer.id
   }
+  get formOwner(){
+    return this.repoForm.get('owner').value;
+  }
+  get formRepo(){
+    return this.repoForm.get('repo').value;
+  }
   @ViewChild('Labels')
   private labelComponent: LabelsPlotComponent;
   @ViewChild('Users')
@@ -55,13 +62,23 @@ export class GitRepoComponent implements OnInit {
   public loading: boolean = false;
 
   constructor(private git: GitService, private formBuilder: FormBuilder, private storage: GitStorageService) { }
-  repoForm = this.formBuilder.group({
-    owner: "",
-    repo: ""
+    repoForm = this.formBuilder.group({
+      owner: "",
+      repo: ""
   })
 
-  ngOnInit() {
-
+  ngAfterViewInit() {
+    //create tooltip
+    const xrate = document.getElementById("rate-info-q")
+    const xrateContent = document.getElementById("rate-info-q-content");
+    fromEvent(xrate, "mouseenter").subscribe((event) => {
+      var offset = xrate.offsetTop;
+      xrateContent.style.top = (offset + 20).toString() + "px";
+      xrateContent.style.display = "block";
+    })
+    fromEvent(xrate, "mouseleave").subscribe(() => {
+      xrateContent.style.display = "none";
+    })
   }
   SelectContainer(id: string){
     selectAll("svg > *").remove();
@@ -73,10 +90,10 @@ export class GitRepoComponent implements OnInit {
     }
   }
   GetRepo(){
+    let owner: string = this.formOwner;
+    let repoName: string = this.formRepo;
     this.currentContainer = null;
     this.loading = true;
-    let owner = this.repoForm.get('owner').value;
-    let repoName = this.repoForm.get('repo').value;
     let repoId = owner + "/" + repoName
     let etag = this.storage.getEtag(repoId) ?? "\"PeanutButterJelly\"";
     var response = this.git.get(repoId, etag, 1)
