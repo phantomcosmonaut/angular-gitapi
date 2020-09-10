@@ -1,0 +1,38 @@
+.wrapper{
+    height: 100%;
+    padding: 20px 20px 0px 20px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #knight{
+      background-image: url('../../assets/knight.svg');
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      min-height: 200px;
+  }
+
+  .info-box{
+      font-family: 'Cinzel+Decorativ';
+      color: #a50d04;
+      overflow: auto;
+      text-align: center;
+      margin-top: 20px;
+  }
+.info-box a{
+    color: inherit;
+  }
+  .info-box p{
+    text-indent: 1.2em;
+      font-size: 1.2em;
+  }
+  
+  .main{
+    background-color: #d9d9d9;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    z-index: -1000;
+  }

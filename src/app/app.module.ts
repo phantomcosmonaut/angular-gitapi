@@ -13,6 +13,9 @@ import { LabelsPlotComponent } from './labelsplot/labelsplot.component';
 import { NullablePipe } from './Pipes/nullable.pipe';
 import { TestComponent } from './test/test.component';
 import { IssuesplotComponent } from './issuesplot/issuesplot.component';
+import { MainComponent } from './main/main.component';
+import { CockpitComponent } from './cockpit/cockpit.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { IssuesplotComponent } from './issuesplot/issuesplot.component';
     UsersPlotComponent,
     NullablePipe,
     TestComponent,
-    IssuesplotComponent
+    IssuesplotComponent,
+    MainComponent,
+    CockpitComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

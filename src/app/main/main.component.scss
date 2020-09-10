@@ -1,0 +1,47 @@
+
+.main{
+  background-color: black;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom: 0;
+  right: 0;
+  z-index: -1000;
+}
+
+#links h2{
+  color:#63d6ff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 5em;
+  font-family: 'Marck Script', cursive;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+#links h2:not(:first-child){
+  padding-top: 10px;
+}
+#links h2:hover::before{
+  content: "-";
+   position:absolute;
+   left:-14px;
+}
+#links h2:hover::after{
+  content: "-";
+   position:absolute;
+}
+.wrapper{
+  height: 100%;
+  background-image: url('../../assets/rey.svg');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  padding: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 1500px){
+  .wrapper{
+    width: 100%;
+  }
+}

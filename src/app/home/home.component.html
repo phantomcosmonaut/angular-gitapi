@@ -1,5 +1,24 @@
-<div id="content">
+<nav id="nav-header" [ngClass]="{'open-nav': this.isOpen, 'closed-nav': !this.isOpen}">
+    <a [routerLink]="'/'">Home</a>
+    <span>|</span>
+    <a href="http://games.brennanbugbee.com" target="_blank">Games</a>
+    <span>|</span>
+    <a href="http://github.com/phantomcosmonaut" target="_blank">Github</a>
+</nav>
+<div id="header-wrapper" (click)="toggle(false)"
+    [ngClass]="{'open-border': this.isOpen, 'closed-border': !this.isOpen}">
+    <div id="nav-border">
+    </div>
+    <div id="header-pulldown">
+        <div class="trapezoid">
+        </div>
+        <div id="tagline">
+            <span>Explore</span>
+        </div>
+    </div>
+</div>
+<div id="content" (click)="toggle(true)">
     <div class="wrapper">
-        <app-git-repo></app-git-repo>
+        <router-outlet></router-outlet>
     </div>
 </div>

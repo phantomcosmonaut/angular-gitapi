@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Home';
-  isOpen = false;
-
   constructor (){}
-  public toggle(bool: boolean){
-    if(bool && this.isOpen){
-      this.isOpen = !this.isOpen;
-    } else if(!bool){
-      this.isOpen = !this.isOpen;
-    }
-  }
+  
 }
