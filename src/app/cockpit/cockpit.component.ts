@@ -15,7 +15,7 @@ export class CockpitComponent implements AfterViewInit, OnInit {
   constructor (private http: HttpClient){}
   ngOnInit():void{
     if(environment.production){
-      this.http.get('https://brennanbugbee.com/external/cockpit.html')
+      this.http.get('https://brennanbugbee.com/assets/html/cockpit.html')
       .subscribe((result: string) => this.template = result)
     }
 
