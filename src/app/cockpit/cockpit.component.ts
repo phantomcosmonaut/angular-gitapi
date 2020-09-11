@@ -1,16 +1,26 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import anime from 'animejs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
   styleUrls: ['./cockpit.component.scss'],
 })
-export class CockpitComponent implements AfterViewInit {
+export class CockpitComponent implements AfterViewInit, OnInit {
   dashMeter = true;
-  constructor (){}
-  ngAfterViewInit(): void {
+  template = "";
+  constructor (private http: HttpClient){}
+  ngOnInit():void{
+    if(environment.production){
+      this.http.get('https://brennanbugbee.com/external/cockpit.html')
+      .subscribe((result: string) => this.template = result)
+    }
+
+  }
+  ngAfterViewInit():void {
     var svg = document.querySelector("svg")
     let rect = svg.getBoundingClientRect()
     var width = rect.width;

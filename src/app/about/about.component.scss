@@ -1,3 +1,25 @@
+.svg-btn{
+  position: relative;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  top: 15px;
+  left: 15px;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.6);
+  background-color: #a50d04;
+  cursor: pointer;
+  &:hover{
+    background-color: #d9d9d9;
+    & svg path {
+      fill: #a50d04;
+    }
+  }
+  &:focus{
+    outline: none;
+    border: none;
+  }
+}
+
 .wrapper{
     height: 100%;
     padding: 20px 20px 0px 20px;
@@ -28,7 +50,6 @@
   }
   
   .main{
-    background-color: #d9d9d9;
     position: absolute;
     top:0;
     left:0;
@@ -36,3 +57,24 @@
     right: 0;
     z-index: -1000;
   }
+  .sticky-background{
+    background-color: #d9d9d9;
+    position: fixed;
+  }
+
+  mat-expansion-panel{
+   background-color: white;
+    &:not(:last-child) {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+ }
+}
+ mat-expansion-panel-header{
+  padding: 15px;
+  font-size: 1.3em;
+  &:hover{
+    text-decoration: underline;
+  }
+ }
+ mat-expansion-panel-description{
+  font-size: 1.2em;
+ }

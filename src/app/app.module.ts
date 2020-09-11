@@ -16,6 +16,8 @@ import { IssuesplotComponent } from './issuesplot/issuesplot.component';
 import { MainComponent } from './main/main.component';
 import { CockpitComponent } from './cockpit/cockpit.component';
 import { AboutComponent } from './about/about.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import { AboutComponent } from './about/about.component';
     IssuesplotComponent,
     MainComponent,
     CockpitComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
+    MatExpansionModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

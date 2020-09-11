@@ -1,72 +1,104 @@
-<div class="main">
-    <div class="wrapper row d-flex justify-content-center">
-        <div class="info-box col-md-5 col align-self-md-center align-self-start">
-            <div *ngIf="content === 'about'">
-                <h1>About</h1>
-                <article>
-                    <p>My name is Brennan and this is my site.
-                        I work on all kinds of different projects and like to learn new tech and languages so I can
-                        create
-                        awesome
-                        things. I'll work on anything that interests me... web-backend, web-frontend, devops, analytics,
-                        whatever.
-                        Some of my work is indexed in the projects section. I started coding in 2018 and haven't looked
-                        back
-                        since.
-                        The pup on the front page is my dog Rey and we live in the beautiful state of Vermont right next
-                        to
-                        Lake
-                        Champlain.
-                    </p>
-                    <p>
-                        Questions, comments, spam &rarr; <em><a
-                                href="mailto: bugbeeb@gmail.com">bugbeeb@gmail.com</a></em>
-                    </p>
+<div class="main sticky-background">
+    <div [routerLink]="'/'" class="svg-btn d-flex justify-content-center align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#d9d9d9" viewBox="0 0 24 24" width="36px" height="36px">
+            <path
+                d="M12 2A1 1 0 1 0 12 4 1 1 0 1 0 12 2zM22.5 11A.5.5 0 1 0 22.5 12 .5.5 0 1 0 22.5 11zM1.5 11A.5.5 0 1 0 1.5 12 .5.5 0 1 0 1.5 11z" />
+            <path
+                d="M12.71,2.296L12,3.1l-0.71-0.804L1.203,11.098L1.5,12H4v8c0,0.552,0.448,1,1,1h4c0.552,0,1-0.448,1-1v-6h4v6c0,0.552,0.448,1,1,1h4c0.552,0,1-0.448,1-1v-8h2.5l0.297-0.902L12.71,2.296z" />
+        </svg>
+    </div>
+    <div class="main">
+        <div class="wrapper row d-flex justify-content-center">
+            <div class="info-box col-lg-5 col align-self-lg-center align-self-start">
+                <div *ngIf="content === 'about'">
+                    <h1>About</h1>
+                    <article>
+                        <p>My name is Brennan and this is my site.
+                            I work on all kinds of different projects and like to learn new tech and languages so I can
+                            create
+                            awesome
+                            things. I'll work on anything that interests me... web-backend, web-frontend, devops,
+                            analytics,
+                            whatever.
+                            Some of my work is indexed in the projects section. I started coding in 2018 and haven't
+                            looked
+                            back
+                            since.
+                            The pup on the front page is my dog Rey and we live in the beautiful state of Vermont right
+                            next
+                            to
+                            Lake
+                            Champlain.
+                        </p>
+                        <p>
+                            Questions, comments, spam &rarr; <em><a
+                                    href="mailto: bugbeeb@gmail.com">bugbeeb@gmail.com</a></em>
+                        </p>
 
-                </article>
+                    </article>
+                </div>
+                <div *ngIf="content === 'projects'">
+                    <h1 class="mb-3">Projects</h1>
+                    <mat-accordion>
+                        <mat-expansion-panel>
+
+                            <mat-expansion-panel-header>Github Api Data Visualizations
+                            </mat-expansion-panel-header>
+                            <mat-expansion-panel-description>
+                                This service allows a user to search for a github repository and
+                                explore
+                                interactive visualizations of that repo's data.
+                                I created this service in order to learn rxjs, angular's http client, and d3.
+                                It works by targeting github's api servers then filterting and preparing the json to be
+                                presented and saved in the browser for later viewing without having to resend http
+                                requests
+                                to github. Subsequent searches utilize certain http headers like ETAG to optimize
+                                performance and reduce traffic.
+                                <hr />&rarr; <a [routerLink]="'/projects/github'">Check it
+                                    out</a> &larr;
+                            </mat-expansion-panel-description>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>Games Site</mat-expansion-panel-header>
+                            <mat-expansion-panel-description>
+                                A subdomain that runs a website focused on multiplayer
+                                html games along with
+                                customizable user accounts.
+                                This site was my first experience with ASP.NET and C# which I enjoy very much.
+                                It utilizes a few different .NET core libraries like Entity Framework and SignalR, both
+                                of
+                                which are fantastic, but less so Razor Pages.
+                                <hr />&rarr; <a href="https://games.brennanbugbee.com" target="blank_">Check it
+                                    out</a> &larr;
+                            </mat-expansion-panel-description>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>SVG Fighter Cockpit</mat-expansion-panel-header>
+                            <mat-expansion-panel-description>I've always loved creating svg artwork but combining it
+                                with
+                                html has been a profoundly fun
+                                experience.
+                                This design is an interative and animated fighter jet cockpit but it's a huge file so it
+                                may take a bit to load.
+                                <hr />
+                                &rarr; <a [routerLink]="'/projects/cockpit'">Check it
+                                    out</a> &larr;
+                            </mat-expansion-panel-description>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>Phaser Backend Template</mat-expansion-panel-header>
+                            <mat-expansion-panel-description>A repository that contains a project template used in
+                                designing more advanced, database-enabled and/or multiplayer html games. Works with any
+                                library, the default preference being Phaser JS.
+                                <hr />
+                                &rarr; <a href="https://github.com/phantomcosmonaut/Tricorder" target="_blank">Check it
+                                    out</a> &larr;
+                            </mat-expansion-panel-description>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
             </div>
-            <div *ngIf="content === 'projects'">
-                <h1>Projects</h1>
-                <article style="text-align: left">
-                    <dl>
-                        <dt>
-                            <a [routerLink]="'/projects/github'">Github api data visualizations</a>
-                        </dt>
-                        <dd>
-                            This service allows a user to search for a github repository and explore
-                            interactive visualizations of that repo's data.
-                            I created this service in order to learn rxjs, angular's http client, and d3.
-                            It works by targeting github's api servers then filterting and preparing the json to be
-                            presented and saved in the browser for later viewing without having to resend http requests
-                            to github. Subsequent searches utilize certain http headers like ETAG to optimize
-                            performance and reduce traffic.
-                        </dd>
-                        <dt>
-                            <a href="https://games.brennanbugbee.com" target="blank_">Games Site</a>
-                        </dt>
-                        <dd>
-                            This is a subdomain that runs a website focused on multiplayer html games along with
-                            customizable user accounts.
-                            This site was my first experience with ASP.NET and C# which I enjoy very much.
-                            It utilizes a few different .NET core libraries like Entity Framework and SignalR, both of
-                            which are fantastic,
-                            but I have decided to swap out the front-end from Razor Pages to Angular at some point in
-                            the future because Razor Pages is pretty underwhelming.
-                        </dd>
-                        <dt>
-                            <a [routerLink]="'/projects/cockpit'">SVG Fighter Cockpit</a>
-                        </dt>
-                        <dd>
-                            I've always loved creating svg artwork but combining it with html has been a profoundly fun
-                            experience.
-                            This design is an interative and animated fighter jet cockpit but it's a huge svg file so it
-                            may take a bit to load.
-                        </dd>
-                    </dl>
-                </article>
+            <div class="flex-column col-lg-7 col-12 align-self-stretch" id="knight">
             </div>
-        </div>
-        <div class="flex-column col-md-7 col-12 align-self-stretch" id="knight">
         </div>
     </div>
-</div>

@@ -5,6 +5,7 @@ import {CockpitComponent} from './cockpit/cockpit.component';
 import { GitRepoComponent } from './git-repo/git-repo.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   {path: "", component: MainComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
     {path: 'cockpit', component: CockpitComponent},
   ]},
   {path: "about", component: AboutComponent},
-  {path: "**", redirectTo: "/"},
+  {path: "**", component: NotFoundComponent},
 ];
 
 @NgModule({
