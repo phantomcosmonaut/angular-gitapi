@@ -1,4 +1,5 @@
-import {$, JQuery} from '../../../node_modules/jquery';
+import JQuery from '../../../node_modules/jquery';
+import $ from 'jquery';
 
 interface spinnerOptions{
   ellipseX?: number;
@@ -32,7 +33,7 @@ export class Spinner{
   public set depth(value: number){
     this._depth = (value <= 1 || value >= 0) ? value : 0.5;
   }
-  //not customizable
+  //immutable
   private readonly parent: string;
   private readonly child: string;
   private readonly slides: JQuery;
@@ -159,7 +160,6 @@ transform(slide: JQuery, delta: number) {
   //center the slide in parent container then apply delta y
   data.y = this.topPad + this.ellipseY + y
   var z = Math.trunc(data.y) + 100
-
   slide.css({
     "transform": "translate(" + data.x + "px, " + data.y + "px) scale("+ scale +")",
     "z-index": z
@@ -208,44 +208,11 @@ endingAnimation(velocity: number) {
   window.requestAnimationFrame(step)
 }
 }
-//sliders
-// $("#ellipseX").slider({
-//   min: 100,
-//   max: 700,
-//   value: 400,
-//   orientation: "vertical"
-// }).height(200)
-// $("#leftPad").slider({
-//   min: -50,
-//   max: 150,
-//   value: 50,
-//   orientation: "vertical"
-// }).height(200)
-// $("#ellipseY").slider({
-//   min: 0,
-//   max: 100,
-//   value: 50,
-//   orientation: "vertical"
-// }).height(200)
-// $("#topPad").slider({
-//   min: -50,
-//   max: 150,
-//   value: 50,
-//   orientation: "vertical"
-// }).height(200)
-// $("#depth").slider({
-//   min: 0,
-//   max: 1,
-//   step: 0.1,
-//   value: 0.5,
-//   orientation: "vertical"
-// }).height(200)
 
-// $(".slider").each(function() {
-//   $($(this).data("target")).text($(this).slider("value"))
-//   $(this).on("slide", function(event, ui) {
-//     $($(this).data("target")).text(ui.value)
-//     window[$(this).prop("id")] = ui.value;
-//     initSlides()
-//   })
-// })
+export interface SpinnerProperty{
+  name: string;
+  min: number;
+  max: number;
+  value: number;
+  steps: number;
+}

@@ -6,6 +6,7 @@ import { GitRepoComponent } from './git-repo/git-repo.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './notfound/notfound.component';
+import { PlateSpinnerComponent } from './plate-spinner/plate-spinner.component';
 
 const routes: Routes = [
   {path: "", component: MainComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
     {path: "", redirectTo: "github", pathMatch: "prefix"},
     {path: "github", component: GitRepoComponent},
     {path: 'cockpit', component: CockpitComponent},
+    {path: 'plate-spinner', component: PlateSpinnerComponent}
   ]},
   {path: "about", component: AboutComponent},
   {path: "**", component: NotFoundComponent},

@@ -1,64 +1,35 @@
 <div class="row">
+    <h2>Custom Plate Spinner Widget</h2>
+    <p>
+        Click and drag within the grey bounding box to spin the slides as they simulate a 3-dimensional rotation while
+        maintaining front-facing positions of the DOM elements. Slides will continute moving for a duration proportional
+        to the speed of the cursor at the time of release.
+    </p>
+</div>
+<div class="row">
     <div id="slideshow" class="col-auto">
 
-        <div class="slide">
-            A
-        </div>
-        <div class="slide">
-            B
-        </div>
-        <div class="slide">
-            C
-        </div>
-        <div class="slide">
-            D
+        <div *ngFor="let letter of ['A', 'B', 'C', 'D']" class="slide">
+            {{letter}}
         </div>
     </div>
     <div id="sliders" class="col-auto">
         <table class="slider-table">
             <tbody>
                 <tr>
-                    <td>EllipseX</td>
-                    <td>EllipseY</td>
-                    <td>Left Pad</td>
-                    <td>Top Pad</td>
-                    <td>Depth</td>
+                    <td *ngFor="let slider of sliders">{{slider.name}}</td>
                 </tr>
                 <tr>
-                    <td>
-                        <span id="ellipseX-value">0</span>
-                    </td>
-                    <td>
-                        <span id="ellipseY-value">0</span>
-                    </td>
-                    <td>
-                        <span id="leftPad-value">0</span>
-                    </td>
-                    <td>
-                        <span id="topPad-value">0</span>
-                    </td>
-                    <td>
-                        <span id="depth-value">0</span>
+                    <td *ngFor="let slider of sliders">
+                        <span id="{{slider.name}}-value">{{slider.value}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <div id="ellipseX" class="slider" data-target="#ellipseX-value"></div>
-                    </td>
-                    <td>
-                        <div id="ellipseY" class="slider" data-target="#ellipseY-value"></div>
-                    </td>
-                    <td>
-                        <div id="leftPad" class="slider" data-target="#leftPad-value"></div>
-                    </td>
-                    <td>
-                        <div id="topPad" class="slider" data-target="#topPad-value"></div>
-                    </td>
-                    <td>
-                        <div id="depth" class="slider" data-target="#depth-value"></div>
+                    <td *ngFor="let slider of sliders">
+                        <input type="range" class="range-slider" id="{{slider.name}}" value="{{slider.value}}"
+                            max="{{slider.max}}" min="{{slider.min}}" step="{{slider.steps}}" />
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
