@@ -1,36 +1,32 @@
-<div class="row">
-    <h2>Custom Plate Spinner Widget</h2>
-    <p>
-        Click and drag within the grey bounding box to spin the slides as they simulate a 3-dimensional rotation while
-        maintaining front-facing positions of the DOM elements. Slides will continute moving for a duration proportional
-        to the speed of the cursor at the time of release.
-    </p>
-</div>
-<div class="row">
-    <div id="slideshow" class="col-auto">
-
-        <div *ngFor="let letter of ['A', 'B', 'C', 'D']" class="slide">
-            {{letter}}
-        </div>
+<div class="wrapper">
+    <div class="row">
+        <h2>Custom Plate Spinner Widget</h2>
+        <p>
+            Click and drag within the grey bounding box to spin the slides as they simulate a 3-dimensional rotation
+            while
+            maintaining front-facing positions of the DOM elements. Slides will continute moving for a duration
+            proportional
+            to the speed of the cursor at the time of release.
+        </p>
     </div>
-    <div id="sliders" class="col-auto">
-        <table class="slider-table">
-            <tbody>
-                <tr>
-                    <td *ngFor="let slider of sliders">{{slider.name}}</td>
-                </tr>
-                <tr>
-                    <td *ngFor="let slider of sliders">
-                        <span id="{{slider.name}}-value">{{slider.value}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td *ngFor="let slider of sliders">
-                        <input type="range" class="range-slider" id="{{slider.name}}" value="{{slider.value}}"
-                            max="{{slider.max}}" min="{{slider.min}}" step="{{slider.steps}}" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row d-flex align-items-center justify-content-center">
+        <div id="slideshow" class="col-auto">
+
+            <div *ngFor="let letter of ['A', 'B', 'C', 'D']" class="slide">
+                {{letter}}
+            </div>
+        </div>
+        <div id="sliders" class="col-lg-4 col-10">
+            <div [formGroup]="form" class="row">
+                <div *ngFor="let slider of sliders;" class="col">
+                    <div class="slider-wrapper">
+                        <label>{{slider.name}}: {{form.get(slider.name).value}}</label>
+                        <input (input)="updateSlides(slider)" type="range" formControlName="{{slider.name}}"
+                            class="range-slider" id="{{slider.name}}" max="{{slider.max}}" min="{{slider.min}}"
+                            step="{{slider.steps}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

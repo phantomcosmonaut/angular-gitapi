@@ -1,7 +1,7 @@
 <nav id="nav-header" [ngClass]="{'open-nav': this.isOpen, 'closed-nav': !this.isOpen}">
     <a [routerLink]="'/'">Home</a>
     <span>|</span>
-    <a href="http://games.brennanbugbee.com" target="_blank">Games</a>
+    <a [routerLink]="'/about'" [queryParams]="{'content': 'projects'}">Projects</a>
     <span>|</span>
     <a href="http://github.com/phantomcosmonaut" target="_blank">Github</a>
 </nav>
