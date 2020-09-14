@@ -1,17 +1,16 @@
-import { Component, OnInit, NgZone, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { GitService } from '../Services/git.service';
 import { GitStorageService } from '../Services/gitStorage.service';
 import { FormBuilder } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import 'd3-transition';
 import { PlotContainer, GitResponse } from '../Classes';
-import { environment } from 'src/environments/environment';
 import { LabelsPlotComponent } from '../labelsplot/labelsplot.component';
 import { UsersPlotComponent } from '../usersplot/usersplot.component';
 import { selectAll } from 'd3-selection';
-import { finalize } from 'rxjs/operators';
 import { IssuesplotComponent } from '../issuesplot/issuesplot.component';
 import { Observable, fromEvent } from 'rxjs';
+import { ToasterService, Toast, Color } from 'src/toasterModule/toaster/toaster.service';
 
 @Component({
   selector: 'app-git-repo',
@@ -61,7 +60,7 @@ export class GitRepoComponent implements AfterViewInit {
   public currentContainer: PlotContainer;
   public loading: boolean = false;
 
-  constructor(private git: GitService, private formBuilder: FormBuilder, private storage: GitStorageService) { }
+  constructor(private toaster: ToasterService, private git: GitService, private formBuilder: FormBuilder, private storage: GitStorageService) { }
     repoForm = this.formBuilder.group({
       owner: "",
       repo: ""
@@ -119,7 +118,7 @@ export class GitRepoComponent implements AfterViewInit {
         })
       }
     }, error => {
-      this.Toaster(error) 
+      this.toaster.addToast({message: error.toString(), bgColor: Color.danger, lifespan: 7000}); 
       this.loading = false 
     })
   }
@@ -136,9 +135,6 @@ export class GitRepoComponent implements AfterViewInit {
   DeleteRepo(){
     this.storage.RemoveContainer(this.currentContainer)
     this.currentContainer = null;
-    this.Toaster("Repo Deleted")
-  }
-  Toaster(message: any){
-    console.log(message);
+    this.toaster.addToast({message: "Repo Deleted", bgColor: Color.danger, lifespan: 2000});
   }
 }

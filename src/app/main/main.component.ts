@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { ToasterService } from '../../toasterModule/toaster/toaster.service';
 
 @Component({
   selector: 'app-main',

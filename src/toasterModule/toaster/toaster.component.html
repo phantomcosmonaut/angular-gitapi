@@ -1,0 +1,4 @@
+<div *ngFor="let toast of messages;" class="message">
+    <span class="inner">{{toast.message}}</span>
+    <span (click)="removeToast(toast)" class="exit">x</span>
+</div>

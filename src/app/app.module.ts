@@ -17,6 +17,7 @@ import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NotFoundComponent } from './notfound/notfound.component';
+import { ToasterModule } from '../toasterModule/toasterApp.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { NotFoundComponent } from './notfound/notfound.component';
     IssuesplotComponent,
     MainComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
+    ToasterModule,
     MatExpansionModule,
     BrowserModule,
     AppRoutingModule,

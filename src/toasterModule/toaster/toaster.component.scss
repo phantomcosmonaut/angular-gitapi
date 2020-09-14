@@ -1,0 +1,21 @@
+.message{
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  background-color: rgb(65, 65, 65);
+  color: white;
+  padding: 5px;
+}
+.inner{
+  display: inline-block;
+  margin: 10px 15px 10px 15px;
+}
+.exit{
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top:0px;
+  width:20px;
+  height:20px;
+}

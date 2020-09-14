@@ -6,12 +6,12 @@
   top: 15px;
   left: 15px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.6);
-  background-color: #a50d04;
+  background-color: #141f9c;
   cursor: pointer;
   &:hover{
     background-color: #d9d9d9;
     & svg path {
-      fill: #a50d04;
+      fill: #141f9c;
     }
   }
   &:focus{
@@ -35,8 +35,8 @@
   }
 
   .info-box{
-    font-family: 'Cinzel Decorativ';
-      color: #a50d04;
+      font-family: 'Crimson Text', serif;
+      color: #141f9c;
       overflow: auto;
       text-align: center;
       margin-top: 20px;
