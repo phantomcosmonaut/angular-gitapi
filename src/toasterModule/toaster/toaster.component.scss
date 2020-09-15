@@ -1,10 +1,14 @@
-.message{
+.toaster{
   position: fixed;
   right: 30px;
   top: 20px;
+}
+.message{
+  margin-bottom: 5px;
   background-color: rgb(65, 65, 65);
   color: white;
   padding: 5px;
+  animation: popUp 0.4s ease-in;
 }
 .inner{
   display: inline-block;
@@ -18,4 +22,15 @@
   top:0px;
   width:20px;
   height:20px;
+}
+
+@keyframes popUp{
+  from{
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
