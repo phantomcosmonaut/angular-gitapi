@@ -26,10 +26,10 @@ phases:
     #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
     #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
     runtime-versions:
-      nodejs: 12.x
+      nodejs: 12
 
     commands:
-      - apt update -y
+      - apt-get update -y
 
   pre_build:
     commands:
