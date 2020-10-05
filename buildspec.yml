@@ -1,0 +1,61 @@
+#aws codedeploy configuration file
+
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #secrets-manager:
+     # key: secret-id:json-key:version-stage:version-id
+     # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+     # - variable
+     # - variable
+  #git-credential-helper: yes
+#batch:
+  #fast-fail: true
+  #build-list:
+  #build-matrix:
+  #build-graph:
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      nodejs: 12.x
+
+    commands:
+      - apt update -y
+
+  pre_build:
+    commands:
+      - npm install -g @angular/cli
+      - npm install 
+  build:
+    commands:
+      - ng build --prod
+      # - command
+  post_build:
+    commands:
+      - echo build complete
+      # - command
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist
+#cache:
+  #paths:
+    # - paths
