@@ -29,7 +29,6 @@ phases:
       nodejs: 12
 
     commands:
-      - yum update -y -q
       - node --version
   pre_build:
     commands:
