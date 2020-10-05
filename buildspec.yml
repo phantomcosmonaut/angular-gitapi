@@ -29,9 +29,7 @@ phases:
       nodejs: 12
 
     commands:
-      - yum update
-      - curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-      - yum install nodejs
+      - yum update -y -q
       - node --version
   pre_build:
     commands:
