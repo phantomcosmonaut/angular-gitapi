@@ -29,8 +29,10 @@ phases:
       nodejs: 12
 
     commands:
-      - apt-get update -y
-
+      - yum update
+      - curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+      - yum install nodejs
+      - node --version
   pre_build:
     commands:
       - npm install -g @angular/cli
